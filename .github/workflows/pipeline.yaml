@@ -1,0 +1,37 @@
+name: Build and Test CI/CD Pipeline 
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js 18.x
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18.x
+        cache: 'npm'
+    - name: Installing
+      run: npm install
+    - name: Running Unit Tests
+      run: npm run test:unit
+    - name: Display SoftUni username
+      run: echo "vlzahariev"
+  
+  
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+      - name: Running UI Tests
+        run: npm run test:ui
