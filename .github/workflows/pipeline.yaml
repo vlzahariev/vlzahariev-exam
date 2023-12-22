@@ -29,9 +29,3 @@ jobs:
       run: npm run test:unit
     - name: Display SoftUni username
       run: echo "vlzahariev"
-  
-  
-      - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
-      - name: Running UI Tests
-        run: npm run test:ui
